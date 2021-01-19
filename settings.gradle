@@ -1,0 +1,3 @@
+include ':deteckit'
+include ':app'
+rootProject.name = "DetectKit"
