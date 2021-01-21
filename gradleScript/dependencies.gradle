@@ -1,0 +1,14 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+ext {
+
+//Version
+
+    supportLibrary = '4.0.1'
+
+//Support Libraries dependencies
+    supportDependencies = [
+            okhttp           :         "com.squareup.okhttp3:okhttp:${supportLibrary}",
+            interceptor      :         "com.squareup.okhttp3:logging-interceptor:${supportLibrary}",
+
+    ]
+}

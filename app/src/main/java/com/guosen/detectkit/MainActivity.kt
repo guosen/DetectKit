@@ -1,6 +1,7 @@
 package com.guosen.detectkit
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -8,6 +9,10 @@ import com.guosen.deteckit.base.FloatWindow
 import com.guosen.deteckit.block.BlockMonitor
 import com.guosen.deteckit.fps.FpsMonitor
 import com.guosen.deteckit.fps.FpsMonitor.Companion.instance
+import com.guosen.deteckit.log.MonitorLogcat
+import com.guosen.deteckit.websocket.WebSocketCallBack
+import com.guosen.deteckit.websocket.WebSocketHelper.Companion.getInstance
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -42,6 +47,35 @@ class MainActivity : AppCompatActivity() {
         BlockMonitor.instance.start(this)//开始卡顿监测
         //制造一个BLock
         makeBlock()
+
+    }
+
+    //startlogs
+    fun startlogs(view : View){
+
+        Log.d("LOG_TAG","this is a log"+Random().nextInt())
+    }
+    fun btnStartWebSocketConnect(view: View) {
+        getInstance()!!.setSocketIOCallBack(object : WebSocketCallBack {
+            override fun onClose() {}
+            override fun onMessage(text: String?) {}
+            override fun onOpen() {
+                MonitorLogcat.getInstance()?.start(object:MonitorLogcat.LogcatOutputCallback{
+                    override fun onReaderLine(line: String?) {
+                        if (line != null) {
+                            getInstance()?.send(line)
+                        }
+                    }
+
+                })
+
+                Log.d("TAG","open..")
+
+            }
+            override fun onConnectError(t: Throwable?) {
+                Log.d("TAG","failure..")
+            }
+        }).connect("http://192.168.10.125:8001/");
 
     }
 

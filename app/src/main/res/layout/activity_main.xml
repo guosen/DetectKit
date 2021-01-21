@@ -33,7 +33,7 @@
         />
 
     <Button
-
+        android:id="@+id/btnBlock"
         app:layout_constraintTop_toBottomOf="@+id/StopFps"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -43,5 +43,23 @@
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginTop="40dp"
         />
+
+    <Button
+        android:id="@+id/btnStartWebSocket"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnBlock"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="开始连接webSocket"
+        app:layout_constraintRight_toRightOf="parent"
+        android:onClick="btnStartWebSocketConnect"/>
+
+    <Button
+        android:onClick="startlogs"
+        app:layout_constraintLeft_toRightOf="@+id/btnStartWebSocket"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/btnStartWebSocket"
+        android:text="开始打印日志"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
