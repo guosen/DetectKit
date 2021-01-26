@@ -39,9 +39,8 @@ class WebSocketHelper private constructor() : WebSocketListener() {
     }
 
     fun send(text: String) {
-        if (mWebSocket != null) {
-            mWebSocket!!.send(text)
-        }
+        mWebSocket?.send(text)
+
     }
 
     fun cancel() {

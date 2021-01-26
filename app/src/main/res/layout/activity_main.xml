@@ -62,4 +62,13 @@
         app:layout_constraintBottom_toBottomOf="@+id/btnStartWebSocket"
         android:text="开始打印日志"/>
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="产生一个异常"
+        app:layout_constraintTop_toBottomOf="@+id/btnStartWebSocket"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:onClick="appendEx"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

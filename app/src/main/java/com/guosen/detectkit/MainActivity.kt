@@ -52,9 +52,15 @@ class MainActivity : AppCompatActivity() {
 
     //startlogs
     fun startlogs(view : View){
-
         Log.d("LOG_TAG","this is a log"+Random().nextInt())
     }
+
+
+    fun appendEx(view : View){
+
+        var s = 4/0
+    }
+
     fun btnStartWebSocketConnect(view: View) {
         getInstance()!!.setSocketIOCallBack(object : WebSocketCallBack {
             override fun onClose() {}
@@ -63,19 +69,19 @@ class MainActivity : AppCompatActivity() {
                 MonitorLogcat.getInstance()?.start(object:MonitorLogcat.LogcatOutputCallback{
                     override fun onReaderLine(line: String?) {
                         if (line != null) {
-                            getInstance()?.send(line)
+                            getInstance()?.send("logcat#"+line)
+                            getInstance()?.send("block#"+"...."+Random().nextInt())
                         }
                     }
 
                 })
-
                 Log.d("TAG","open..")
 
             }
             override fun onConnectError(t: Throwable?) {
                 Log.d("TAG","failure..")
             }
-        }).connect("http://192.168.10.125:8001/");
+        }).connect("http://192.168.10.127:8001/");
 
     }
 

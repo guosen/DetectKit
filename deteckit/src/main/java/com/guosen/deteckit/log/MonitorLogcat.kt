@@ -12,7 +12,7 @@ import java.io.InputStreamReader
  *     author : guosenlin
  *     e-mail : guosenlin91@gmail.com
  *     time   : 2021/01/21
- *     desc   :
+ *     desc   : Logcat
  *     version: 1.0
  * </pre>
  */
