@@ -100,4 +100,14 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
     }
+
+    fun aCreatOOM(view: View){
+
+        val list: MutableList<Observable> = ArrayList<Observable>()
+        while (true) {
+            var str: Observable = Observable()
+            list.add(str)
+        }
+
+    }
 }
